@@ -1,4 +1,4 @@
-<%--
+<%@ page import="prueba.Prueba" %><%--
   Created by IntelliJ IDEA.
   User: ubuntie
   Date: 10/06/18
@@ -8,9 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Prueba</title>
+    <title>Que pasaaaaaaaaaaa</title>
 </head>
 <body>
-    <h1><%= System.currentTimeMillis()%></h1>
+    <h1><%= System.currentTimeMillis() %></h1>
+    <h1><%= Prueba.hello() %></h1>
 </body>
 </html>

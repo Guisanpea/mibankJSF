@@ -5,6 +5,7 @@ buildscript {
 
     dependencies {
         classpath 'org.apache.tomee.gradle:tomee-embedded:7.0.0'
+        classpath 'mysql:mysql-connector-java:5.1.+'
     }
 }
 
@@ -30,11 +31,13 @@ dependencies {
     // will be placed in the ear root
     // deploy project(':war')
     deploy project(path: ':war', configuration: 'archives')
+    deploy project(path: ':ejb', configuration: 'archives')
 
+    testCompile group: 'junit', name: 'junit', version: '4.12'
     // The following dependencies will become ear libs and will
     // be placed in a dir configured via the libDirName property
     // earlib group: 'log4j', name: 'log4j'
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    earlib  group: 'mysql', name: 'mysql-connector-java', version: '5.1.+', ext: 'jar'
 }
 
 ear {
