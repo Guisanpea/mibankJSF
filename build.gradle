@@ -40,6 +40,13 @@ dependencies {
     earlib  group: 'mysql', name: 'mysql-connector-java', version: '5.1.+', ext: 'jar'
 }
 
+sourceSets {
+    main {
+        java {
+            exclude 'ejb/**'
+        }
+    }
+}
 ear {
     appDirName 'src/main/app'  // use application metadata found in this folder
     // put dependent libraries into APP-INF/lib inside the generated EAR
