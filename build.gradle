@@ -1,21 +1,35 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'org.apache.tomee.gradle:tomee-embedded:7.0.0'
+    }
+}
+
 plugins {
     id 'ear'
     id 'java'
 }
+apply plugin: 'org.apache.tomee.tomee-embedded'
 
-group 'org.uma.mibank'
-version '0.0.1-SNAPSHOT'
+allprojects {
+    group 'org.uma.mibank'
+    version '0.0.1-SNAPSHOT'
 
-sourceCompatibility = 1.8
+    sourceCompatibility = 1.8
 
-repositories {
-    mavenCentral()
+    repositories {
+        mavenCentral()
+    }
 }
 
 dependencies {
     // The following dependencies will be the ear modules and
     // will be placed in the ear root
     // deploy project(':war')
+    deploy project(path: ':war', configuration: 'archives')
 
     // The following dependencies will become ear libs and will
     // be placed in a dir configured via the libDirName property
@@ -29,7 +43,7 @@ ear {
     libDirName 'APP-INF/lib'
     deploymentDescriptor {  // custom entries for application.xml:
 //      fileName = "application.xml"  // same as the default value
-//      version = "6"  // same as the default value
+      version = "7"  // same as the default value
 //      applicationName = "customear"
         initializeInOrder = true
 //      displayName = "Custom Ear"  // defaults to project.name
